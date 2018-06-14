@@ -2,6 +2,7 @@ package com.helpdesk.dao;
 
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.helpdesk.model.Tecnico;
 import com.helpdesk.model.Usuario;
@@ -38,8 +39,8 @@ public class UsuarioDAO implements HelpdeskDAO<Usuario> {
 	}
 
 	@Override
-	public ObservableList<Usuario> List() throws SQLException {
-		ObservableList<Usuario> list=FXCollections.observableArrayList();
+	public ArrayList<Usuario> List() throws SQLException {
+		ArrayList<Usuario> list=new ArrayList<>();
 		list.addAll(repository.findAll());
 		return list;
 	}
@@ -50,6 +51,10 @@ public class UsuarioDAO implements HelpdeskDAO<Usuario> {
 	public Usuario findByTecnico(Tecnico tecnico) throws SQLException {
 		
 		return repository.findByTecnicoId(tecnico.getId());
+	}
+	@Override
+	public Usuario Find(int id) throws SQLException {
+		return repository.find(id);
 	}
 
 	

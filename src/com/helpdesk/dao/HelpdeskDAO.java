@@ -1,8 +1,7 @@
 package com.helpdesk.dao;
 
 import java.sql.SQLException;
-
-import javafx.collections.ObservableList;
+import java.util.ArrayList;
 
 public interface HelpdeskDAO<T> {
 
@@ -12,6 +11,8 @@ public interface HelpdeskDAO<T> {
 
 	public void Update(T inp) throws SQLException;
 
-	public ObservableList<T> List() throws SQLException;
+	public ArrayList<T> List() throws SQLException;
+	public T Find(int id) throws SQLException;
+	
 
 }

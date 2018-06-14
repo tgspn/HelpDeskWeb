@@ -1,5 +1,7 @@
 package com.helpdesk.dao;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Comparator;
 
 import com.helpdesk.model.Cliente;
@@ -9,11 +11,11 @@ import javafx.collections.ObservableList;
 
 public class ClienteDAO implements HelpdeskDAO<Cliente> {
 
-	private static ObservableList<Cliente> list;
+	private static ArrayList<Cliente> list;
 
 	public ClienteDAO() {
 		if (list == null)
-			list = FXCollections.observableArrayList();
+			list = new ArrayList<>();
 	}
 
 	@Override
@@ -45,8 +47,14 @@ public class ClienteDAO implements HelpdeskDAO<Cliente> {
 	}
 
 	@Override
-	public ObservableList<Cliente> List() {
+	public ArrayList<Cliente> List() {
 		return list;
+	}
+
+	@Override
+	public Cliente Find(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

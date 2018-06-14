@@ -1,10 +1,11 @@
 package com.helpdesk.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.helpdesk.Util.SituacaoType;
-import com.helpdesk.modelss.Chamado;
+import com.helpdesk.model.Chamado;
 import com.helpdesk.repository.ChamadoRepository;
 
 import javafx.collections.FXCollections;
@@ -13,12 +14,12 @@ import javafx.collections.ObservableList;
 public class ChamadoDAO implements HelpdeskDAO<Chamado> {
 
 	private ChamadoRepository repository;
-	private ObservableList<Chamado> list;
+	private ArrayList<Chamado> list;
 
 	public ChamadoDAO() throws ClassNotFoundException {
 		repository = new ChamadoRepository();
 		if (list == null)
-			list = FXCollections.observableArrayList();
+			list = new ArrayList<>();
 	}
 
 	@Override
@@ -43,15 +44,15 @@ public class ChamadoDAO implements HelpdeskDAO<Chamado> {
 		repository.Update(model);
 	}
 	
-	public ObservableList<Chamado>ListBySituacao(SituacaoType situacao) throws SQLException{
-		List<Chamado> select = repository.findAllForSituacao(situacao.toString());
+	public ArrayList<Chamado>ListBySituacao(SituacaoType situacao) throws SQLException{
+		ArrayList<Chamado> select = repository.findAllForSituacao(situacao.toString());
 		
 		fillList(select);
 		
 		return list;
 	}
 
-	public ObservableList<Chamado> ListBySituacaoAndCategoria(SituacaoType situacao, String categoria)
+	public ArrayList<Chamado> ListBySituacaoAndCategoria(SituacaoType situacao, String categoria)
 			throws SQLException {
 		if(categoria.isEmpty())
 			return ListBySituacao(situacao);
@@ -63,17 +64,20 @@ public class ChamadoDAO implements HelpdeskDAO<Chamado> {
 		return list;
 	}
 	@Override
-	public ObservableList<Chamado> List() throws SQLException {
-		java.util.List<Chamado> select = repository.findAll();
+	public ArrayList<Chamado> List() throws SQLException {
+		ArrayList<Chamado> select = repository.findAll();
 		fillList(select);
 		return list;
 	}
-	public ObservableList<Chamado> ListForTecnico(int id) throws SQLException {
-		java.util.List<Chamado> select = repository.findAllForTecnico(id);
+	public ArrayList<Chamado> ListForTecnico(int id) throws SQLException {
+		ArrayList<Chamado> select = repository.findAllForTecnico(id);
 		fillList(select);
 		return list;
 	}
-
+	@Override
+	public Chamado Find(int id) throws SQLException {
+		return repository.find(id);
+	}
 	private void fillList(java.util.List<Chamado> select) {
 		for (Chamado c : select) {
 			boolean flag=false;
@@ -110,6 +114,8 @@ public class ChamadoDAO implements HelpdeskDAO<Chamado> {
 		}
 		
 	}
+
+	
 
 	
 

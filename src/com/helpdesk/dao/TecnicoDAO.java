@@ -1,24 +1,23 @@
 package com.helpdesk.dao;
 
 import java.sql.SQLException;
-import java.util.Comparator;
+import java.util.ArrayList;
 
-import com.helpdesk.modelss.Chamado;
-import com.helpdesk.modelss.Cliente;
-import com.helpdesk.modelss.Tecnico;
+import com.helpdesk.model.Tecnico;
 import com.helpdesk.repository.TecnicoRepository;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+
 public class TecnicoDAO implements HelpdeskDAO<Tecnico> {
 
-	private ObservableList<Tecnico> list;
+	private ArrayList<Tecnico> list;
 	private TecnicoRepository repository;
 
 	public TecnicoDAO() throws ClassNotFoundException {
 		this.repository = new TecnicoRepository();
-		list = FXCollections.observableArrayList();
+		list = new ArrayList<Tecnico>();
 	}
 
 	@Override
@@ -41,9 +40,14 @@ public class TecnicoDAO implements HelpdeskDAO<Tecnico> {
 	}
 
 	@Override
-	public ObservableList<Tecnico> List() throws SQLException {
+	public ArrayList<Tecnico> List() throws SQLException {
 		list.addAll(repository.findAll());
 		return list;
+	}
+
+	@Override
+	public Tecnico Find(int id) throws SQLException {
+		return repository.find(id);
 	}
 
 }
