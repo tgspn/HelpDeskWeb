@@ -28,10 +28,11 @@ public class LoginController extends HttpServlet{
 				e.printStackTrace();
 			}
 	}
+		
 	public void doPost(HttpServletRequest request,
 			HttpServletResponse response)
 				throws ServletException, IOException {
-
+		
 		Usuario user;
 		try {
 			String login = request.getParameter("login");
