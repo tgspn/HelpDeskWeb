@@ -1,11 +1,9 @@
 package com.helpdesk.repository;
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Connection;
-
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import org.sqlite.JDBC;
 public class ConnectionSingleton {
 	
 	private static ConnectionSingleton instance;
@@ -14,12 +12,11 @@ public class ConnectionSingleton {
 	private ConnectionSingleton() throws ClassNotFoundException {
 
 
-		Class.forName("org.sqlite.JDBC");
-
 		
 		try {
+			Class.forName("org.sqlite.JDBC");
 			// create a database connection
-			connection = DriverManager.getConnection("jdbc:sqlite:sample.db");			
+			connection = DriverManager.getConnection("jdbc:sqlite:D:\\Projetos\\Java\\DW2\\HelpDesk\\sample.db");			
 		}
 
 		catch (SQLException e) {

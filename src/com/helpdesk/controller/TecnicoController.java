@@ -3,6 +3,7 @@ package com.helpdesk.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +15,7 @@ import com.helpdesk.Util.TecnicoType;
 import com.helpdesk.dao.TecnicoDAO;
 import com.helpdesk.model.Tecnico;
 
-@WebServlet("/tecnico")
+@WebServlet(name="/tecnico",urlPatterns = "/")
 public class TecnicoController extends HttpServlet {
 
 	private TecnicoDAO dao;
@@ -27,7 +28,21 @@ public class TecnicoController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	private void processRequest(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("tecnico/home.jsp");
+		dispatcher.forward(request, response);
+	}
+	
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		processRequest(request, response);
+	}
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String type = request.getParameter("type");
 		String action = request.getParameter("action");
