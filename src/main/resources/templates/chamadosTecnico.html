@@ -32,56 +32,20 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+        <div class="col-sm-3 col-md-2 sidebar">          
           <ul class="nav nav-sidebar">
-            <li class="bgMenu"><h4 class="menu">Administrador</h4></li>
-            <li><a href="listaAdm.html">Administradores</a></li>
+            <li class="bgMenu"><h4 class="menu">Home</h4></li>
+            <li><a href="index.html">Requisições</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li class="bgMenu"><h4 class="menu">Usuários</h4></li>
             <li><a href="listaTec.html">Técnicos</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li class="bgMenu"><h4 class="menu">Administradores</h4></li>
-            <li><a href="listaAdm.html">Lista</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li class="bgMenu"><h4 class="menu">Administradores</h4></li>
-            <li><a href="listaTec.html">Lista</a></li>
           </ul>
         </div>
         
        
       </div>
       
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Minhas Requisições</h1>
-
-          
-          
-          <div class="table-responsive">
-
-          </div><table id="tabela" class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Categoria</th>
-                  <th>Assunto</th>
-                  <th>Descrição</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-              
-                <tr th:each="modelo : ${model.meusChamados}">
-                  <td th:text="${modelo.id}">1,001</td>
-                  <td th:text="${modelo.categoria}">Lorem</td>
-                  <td th:text="${modelo.assunto}">ipsum</td>
-                  <td th:text="${modelo.descricao}">dolor</td>
-                  <td th:text="${modelo.status}">sit</td>
-                </tr>               
-                
-              </tbody>
-            </table>
-          </div>
-        </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Requisições</h1>
   
@@ -109,11 +73,41 @@
                   <td th:text="${modelo.assunto}">ipsum</td>
                   <td th:text="${modelo.descricao}">dolor</td>
                   <td th:text="${modelo.status}">sit</td>
-                </tr>  
-                  
+                </tr> 
                 </tbody>
               </table>
             </div>
+      
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Minhas Requisições</h1>
+      
+                
+                
+                <div class="table-responsive">
+      
+                </div><table id="tabela" class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Categoria</th>
+                        <th>Assunto</th>
+                        <th>Descrição</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                       <tr th:each="modelo : ${model.meusChamados}">
+                          <td th:text="${modelo.id}">1,001</td>
+                          <td th:text="${modelo.categoria}">Lorem</td>
+                          <td th:text="${modelo.assunto}">ipsum</td>
+                          <td th:text="${modelo.descricao}">dolor</td>
+                          <td th:text="${modelo.status}">sit</td>
+                        </tr>  
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>  
       </div>
     </div>
     </div>
