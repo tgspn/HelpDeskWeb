@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/estilo.css">
+</head>
+
+<body>
+  <div id="wrap">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+            aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">HelpDesk</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="perfil.html">@Usuario</a>
+            </li>
+            <li>
+              <a href="../index.html">Sair</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="bgMenu">
+              <h4 class="menu">Administrador</h4>
+            </li>
+            <li>
+              <a href="listaAdm.html">Administradores</a>
+            </li>
+            <li>
+              <a href="listaTec.html">Técnicos</a>
+            </li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li class="bgMenu">
+              <h4 class="menu">Administradores</h4>
+            </li>
+            <li>
+              <a href="listaAdm.html">Lista</a>
+            </li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li class="bgMenu">
+              <h4 class="menu">Administradores</h4>
+            </li>
+            <li>
+              <a href="listaTec.html">Lista</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Perfil</h1>
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 col-xs-offset-2 col-md-offset-4">
+              <img src="../img/foto-perfil.jpg" width="200" height="200" class="img-circle" alt="Generic placeholder thumbnail">
+              <h4>José Eduardo da Silva</h4>
+              <span class="text-muted">Estudante</span>
+            </div>
+          </div>
+
+          <h2 class="sub-header">Informação da conta</h2>
+          <div class="">
+            <form method="post" action="" class="form-horizontal">
+              <div class="form-group">
+                <div class="col-md-12">
+                  <label>Nome:</label>
+                  <input type="text" name="nome" class="form-control" value="José Eduardo da Silva">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-6">
+                  <label>Data de nascimento:</label>
+                  <input type="date" name="dataNascimento" value="08/09/1995" class="form-control">
+                </div>
+                <div class="col-md-6">
+                  <label>Sexo:</label>
+                  <select name="sexo" class="form-control">
+                    <option value="">Selecione uma opção</option>
+                    <option value="m" selected="">Masculino</option>
+                    <option value="f">Feminino</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-md-6">
+                  <label>Email:</label>
+                  <input type="text" name="email" value="joseedu@gmail.com" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-3">
+                  <label>CPF:</label>
+                  <input type="text" name="CPF" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-3">
+                  <label>Telefone:</label>
+                  <input type="text" name="telefone" value="(16) 3374-8754" class="form-control">
+                </div>
+                <div class="col-md-3">
+                  <label>Celular:</label>
+                  <input type="text" name="celular" value="(16) 99256-0214" class="form-control">
+                </div>
+                <div class="col-md-6">
+                  <label>Endereço:</label>
+                  <input type="text" name="endereco" value="Rua ..." class="form-control">
+                </div>
+                <div>
+                  <div class="col-md-3">
+                    <label>CEP:</label>
+                    <input type="text" name="cep" class="form-control">
+                  </div>
+                </div>
+                <div>
+                  <div class="col-md-3">
+                    <label>Bairro:</label>
+                    <input type="text" name="bairro" class="form-control">
+                  </div>
+                </div>
+                <div>
+                  <div class="col-md-3">
+                    <label>Cidade:</label>
+                    <input type="text" name="Cidade"  class="form-control">
+                  </div>
+                </div>
+                <div>
+                    <div class="col-md-3">
+                      <label>Data Admissão:</label>
+                      <input type="text" name="Data Admissao" value="__/__/____" class="form-control">
+                    </div>
+                  </div>
+                <div class="col-md-6">
+                  <label name "Estado" style="margin-top: 30px">Estado </label>
+                  <select>
+                    <option value="" class="form-control"></option>
+                    <option value="AC">AC</option>
+                    <option value="AL">AL</option>
+                    <option value="AP">AP</option>
+                    <option value="AM">AM</option>
+                    <option value="BA">BA</option>
+                </div>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA ">MA</option>
+                <option value="MT">MT</option>
+                <option value="MS">MS</option>
+                <option value="MG">MG</option>
+                <option value="PA ">PA</option>
+                <option value="PB">PB</option>
+                <option value="PR ">PR</option>
+                <option value="PE ">PE</option>
+                <option value="PI">PI</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RS ">RS</option>
+                <option value="RO ">RO</option>
+                <option value="RR">RR</option>
+                <option value="SC">SC</option>
+                <option value="SP">SP</option>
+                <option value="SE">SE</option>
+                <option value="TO">TO</option>
+
+                </select>
+                
+              </div>
+              
+
+
+
+          </div>
+
+          <hr>
+          <h3>Dados acadêmicos</h3>
+          <div class="form-group">
+            <div class="col-md-12">
+              <label>Instituição:</label>
+              <input type="text" name="instituicao" value="Instituto Federal São Paulo - IFSP - campus São Carlos" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-8">
+              <label>Curso:</label>
+              <input type="text" name="curso" value="Análise e Desenvolvimento de Sistemas" class="form-control">
+            </div>
+            <div class="col-md-4">
+              <label>Escolaridade:</label>
+              <select name="escolaridade" class="form-control">
+                <option value=""></option>
+                <option value="Médio">Médio</option>
+                <option value="Superior" selected="">Superior</option>
+                <option value="Pós-Graduado">Pós-Graduado</option>
+                <option value="Mestrado">Mestrado</option>
+                <option value="Doutorado">Doutorado</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-2">
+              <label>Conclusão:</label>
+              <input type="text" name="conclusao" value="05/2020" class="form-control">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-success pull-right">Atualizar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script type="text/javascript" src="../bootstrap-3.3.7/js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+</html>
