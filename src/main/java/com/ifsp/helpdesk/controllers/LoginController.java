@@ -15,6 +15,6 @@ public class LoginController {
 	@PostMapping("/login")
     public String login(@Valid LoginViewModel user, BindingResult bindingResult, Model model) {
        
-		return "home";
+		return "redirect:tecnico";
     }
 }
