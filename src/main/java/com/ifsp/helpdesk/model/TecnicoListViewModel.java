@@ -32,7 +32,8 @@ public class TecnicoListViewModel {
 	private ArrayList<ChamadoViewModel> ParseChamado(ArrayList<Chamado> list){
 		meusChamados=new ArrayList<>();
 		for(Chamado chamado:list) {
-			meusChamados.add(new ChamadoViewModel(chamado.getId(),chamado.getCategoria(),chamado.getAssunto(),chamado.getDescricao(),chamado.getSituacao()));
+			meusChamados.add(new ChamadoViewModel(chamado.getId(),chamado.getCategoria(),
+					chamado.getAssunto(),chamado.getDescricao(),chamado.getSituacao(),chamado.getNota(),chamado.getTecnico()));
 		}
 		
 		return meusChamados;

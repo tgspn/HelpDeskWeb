@@ -23,8 +23,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="perfil.html">@Usuario</a></li>
-            <li><a href="../index.html">Sair</a></li>
+            <li><a href="perfil.html" th:text="${usuario}"></a></li>
+            <li><a href="/login/logout">Sair</a></li>
           </ul>
         </div>
       </div>
@@ -49,10 +49,10 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Requisições</h1>
   
-            <button class="btn btn-Bloquear" type="submit">Bloquear</button>
-            <button class="btn btn-Desbloquear"type="submit">Desbloquear</button>
+            
+            
             <button class="btn btn-Dethalhes"type="submit">Dethalhes</button>
-            <button class="btn btn-Finalizar"type="submit">Finalizar</button>
+            
 
             <div class="table-responsive">
   
@@ -64,16 +64,18 @@
                     <th>Assunto</th>
                     <th>Descrição</th>
                     <th>Status</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr th:each="modelo : ${model.fila}">
-                  <td th:text="${modelo.id}">1,001</td>
-                  <td th:text="${modelo.categoria}">Lorem</td>
-                  <td th:text="${modelo.assunto}">ipsum</td>
-                  <td th:text="${modelo.descricao}">dolor</td>
-                  <td th:text="${modelo.status}">sit</td>
-                </tr> 
+	                  <td th:text="${modelo.id}">1,001</td>
+	                  <td th:text="${modelo.categoria}">Lorem</td>
+	                  <td th:text="${modelo.assunto}">ipsum</td>
+	                  <td th:text="${modelo.descricao}">dolor</td>
+	                  <td th:text="${modelo.status}">sit</td>
+	                  <td ><a th:href="@{'/tecnico/bloquear?id='+${modelo.id}}" class="btn btn-Bloquear" type="submit">Bloquear</a></td>
+               	 </tr> 
                 </tbody>
               </table>
             </div>
@@ -93,6 +95,7 @@
                         <th>Assunto</th>
                         <th>Descrição</th>
                         <th>Status</th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -102,6 +105,8 @@
                           <td th:text="${modelo.assunto}">ipsum</td>
                           <td th:text="${modelo.descricao}">dolor</td>
                           <td th:text="${modelo.status}">sit</td>
+                          <td><a th:href="@{'/tecnico/desbloquear?id='+${modelo.id}}" class="btn btn-Desbloquear">Desbloquear</a> |
+							  <a th:href="@{'/tecnico/finalizar?id='+${modelo.id}}" class="btn btn-Finalizar" >Finalizar</a></td>
                         </tr>  
                       
                     </tbody>

@@ -248,8 +248,8 @@ public abstract class repositoryBase<T> {
 	}
 
 	public T find(int id) throws SQLException {
-		ArrayList<T> result= select("",String.format(" {0} = {1} ", getPrimaryKeyField(), id));
-		if(result.isEmpty())
+		ArrayList<T> result = select("", " " + getPrimaryKeyField() + " = " + id + " ");
+		if (result.isEmpty())
 			return null;
 		return result.get(0);
 	}

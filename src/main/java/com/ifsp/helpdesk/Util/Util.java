@@ -2,6 +2,10 @@ package com.ifsp.helpdesk.Util;
 
 import java.security.NoSuchAlgorithmException;
 
+import javax.servlet.http.HttpSession;
+
+import com.ifsp.helpdesk.model.entities.Usuario;
+
 public class Util {
 	public static String MD5(String md5) throws NoSuchAlgorithmException {
 
@@ -13,6 +17,15 @@ public class Util {
 		}
 		return sb.toString();
 
+	}
+	
+	public static Usuario getCurrentUser(HttpSession session) {
+		Usuario user = null;
+		Object obj = session.getAttribute("usuario");
+		if (obj == null)
+			return null;
+
+		return (Usuario) obj;
 	}
 	
 	
