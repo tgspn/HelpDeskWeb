@@ -21,7 +21,6 @@ import com.ifsp.helpdesk.dao.UsuarioDAO;
 import com.ifsp.helpdesk.model.LoginViewModel;
 import com.ifsp.helpdesk.model.entities.Usuario;
 
-import javafx.scene.control.Alert.AlertType;
 
 @Controller
 @RequestMapping("login")

@@ -248,7 +248,7 @@ public abstract class repositoryBase<T> {
 	}
 
 	public T find(int id) throws SQLException {
-		ArrayList<T> result = select("", " " + getPrimaryKeyField() + " = " + id + " ");
+		ArrayList<T> result = select("", " " +table+"."+ getPrimaryKeyField() + " = " + id + " ");
 		if (result.isEmpty())
 			return null;
 		return result.get(0);

@@ -13,4 +13,5 @@ public enum TecnicoCategoria {
 	public String toString() {
 		return type;
 	}
+	
 }

@@ -36,22 +36,24 @@
           <ul class="nav nav-sidebar">
             
             <li ><a href="admin/criar">Nova requisição</a></li>
-            <li><a href="#">Detalhes</a></li>
-            <li><a href="#">Técnicos</a></li>
+            <li ><a href="usuario/">Usuário</a></li>
+            <!-- <li><a href="#">Detalhes</a></li>
+            <li><a href="#">Técnicos</a></li> -->
           
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-          <h2 class="sub-header">Titulo</h2>
+          <h2 class="sub-header">Painel administrativo</h2>
           <div class="table-responsive">
             <table id="tabela" class="table table-striped">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
+                  <th>Categoria</th>
+                  <th>Assunto</th>
+                  <th>Descrição</th>
+                  <th>Status</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -61,7 +63,10 @@
 	                  <td th:text="${modelo.assunto}">ipsum</td>
 	                  <td th:text="${modelo.descricao}">dolor</td>
 	                  <td th:text="${modelo.status}">sit</td>
-	                  <td ><a th:href="@{'/tecnico/bloquear?id='+${modelo.id}}" class="btn btn-Bloquear" type="submit">Bloquear</a></td>
+	                  <td ><a th:if="${session.usuario.tipoUsuario.equals('Tecnico')}" th:href="@{'/tecnico/bloquear?id='+${modelo.id}}" class="btn btn-primary" type="submit">Bloquear</a>
+	                  	  <a th:if="${session.usuario.tipoUsuario.equals('Administrador') && modelo.status=='Aberto'}" th:href="@{'/admin/editar?id='+${modelo.id}}" class="btn btn-primary">Editar</a>
+	                  	  <a th:if="${session.usuario.tipoUsuario.equals('Administrador') && modelo.status!='Bloqueado'}" th:href="@{'/admin/excluir?id='+${modelo.id}}" class="btn btn-danger">Excluir</a>
+	                  </td>
                	 </tr> 
               </tbody>
             </table>

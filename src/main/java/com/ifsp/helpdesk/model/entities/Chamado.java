@@ -10,7 +10,9 @@ public class Chamado {
 	private int idCliente;
 	private Tecnico tecnico;
 	private String nota;
-
+	public Chamado() {
+		
+	}
 	public Chamado(int id, String descricao, String categoria, String assunto, String situacao, int idCliente,
 			Tecnico tecnico,String nota) {
 		this.id = id;

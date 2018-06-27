@@ -5,7 +5,7 @@ import com.ifsp.helpdesk.model.entities.Chamado;
 import com.ifsp.helpdesk.model.entities.Tecnico;
 
 public class ChamadoViewModel {
-	private int id;
+	private Integer id;
 	private String categoria;
 	private String assunto;
 	private String descricao;
@@ -13,7 +13,7 @@ public class ChamadoViewModel {
 	private String notas;
 	private Tecnico tecnico;
 	
-	public ChamadoViewModel(int id, String categoria, String assunto, String descricao, String status,String notas,Tecnico tecnico) {
+	public ChamadoViewModel(Integer id, String categoria, String assunto, String descricao, String status,String notas,Tecnico tecnico) {
 		super();
 		this.id = id;
 		this.categoria = categoria;

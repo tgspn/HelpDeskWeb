@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/estilo.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+	integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+	crossorigin="anonymous">
+</head>
+
+<body>
+	<div id="wrap">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+						aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">HelpDesk</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a th:text="${usuario}">@Usuario</a></li>
+						<li><a href="../index.html">Sair</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3 col-md-2 sidebar">
+					<ul class="nav nav-sidebar">
+						<li ><a href="admin/criar">Nova requisição</a></li>
+           				 <li ><a href="/usuario">Usuário</a></li>
+					</ul>
+					
+				</div>
+				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<a href="/usuario">Voltar</a>
+					<h1 class="page-header">Cadastro de usuário</h1>
+
+
+
+					<div class="">
+						<form method="post" action="" class="form-horizontal">
+							<input type="hidden" name="id" th:value="${model.id}"
+								class="form-control">
+							<h2 class="sub-header">Dados de acesso</h2>
+							<div class="form-group">
+								<div class="col-md-6">
+									<label>Usuário</label> <input type="usuario" autocomplete="off"
+										name="usuario" th:value="${model.usuario}"
+										class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-6">
+									<label>Senha</label> <input type="password" name="senha"
+										th:value="${model.senha}" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-6">
+									<label>Tipo de usuário</label>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio"
+											name="tipoUsuario" value="TECNICO" id="tipoUsuario"
+											th:checked="${model.tipoUsuario==T(com.ifsp.helpdesk.Util.TecnicoCategoria).TECNICO}"> <label
+											class="form-check-label" for="tipoUsuario">Tecnico</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio"
+											name="tipoUsuario" id="tipoUsuario1" value="ADMINISTRADOR"
+											th:checked="${model.tipoUsuario==T(com.ifsp.helpdesk.Util.TecnicoCategoria).ADMINISTRADOR}">
+										<label class="form-check-label" for="tipoUsuario1">Administrador</label>
+									</div>
+
+								</div>
+							</div>
+						
+							<div class="form-group">
+							
+								<div class="col-md-6 hidden" th:if="${action=='criar'}">
+									<label>Tecnico:</label> <select name="tecnico_id"
+										class="form-control" id="tecnico_id">
+										<option value=""></option>
+
+										<option th:each="tecnico : ${tecnicos}"
+											th:value="${tecnico.id}" th:text="${tecnico.nome}"
+											th:selected="${tecnico.id == 'model.tecnico_id'}"></option>
+									</select>
+								</div>
+								<input th:if="${action=='editar'}" type="hidden" name="tecnico_id" th:value="${model.tecnico_id}" >
+
+							</div>
+							<hr />
+							<div id="dadosTecnico">
+								<input type="hidden" name="tecnico.id"
+								th:value="${model.tecnico.id}" class="form-control">
+								<h2 class="sub-header">Dados do Tecnico</h2>
+								<div class="form-group">
+									<div class="col-md-6">
+										<label>Nome:</label> <input type="text" autocomplete="off"
+											name="tecnico.nome" th:value="${model.tecnico.nome}"
+											class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-3">
+										<label>Categoria:</label> <select name="tecnico.categoria"
+											class="form-control">
+											<option
+												th:selected="${model.tecnico.categoria == 'Software'}">Software</option>
+											<option
+												th:selected="${model.tecnico.categoria == 'Hardware'}">Hardware</option>
+											<option th:selected="${model.tecnico.categoria == 'Redes'}">Redes</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-6">
+										<label>Email:</label> <input type="email" autocomplete="off"
+											name="tecnico.email" th:value="${model.tecnico.email}"
+											class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-6">
+										<label>Telefone:</label> <input type="tel"
+											name="tecnico.telefone" autocomplete="off"
+											th:value="${model.tecnico.telefone}" class="form-control">
+									</div>
+								</div>
+							</div>
+					</div>
+
+					<button type="submit" class="btn btn-primary"
+						th:text="${action=='criar'? 'Cadastrar':'Salvar'}"></button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script type="text/javascript"
+		src="../bootstrap-3.3.7/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
+		
+		<script>
+			$("#tecnico_id").change((x)=>{
+				if($("#tecnico_id").val()!=='')
+					$("#dadosTecnico").addClass("hidden");
+				else
+					$("#dadosTecnico").removeClass("hidden");
+			})
+		</script>
+</body>
+
+</html>
