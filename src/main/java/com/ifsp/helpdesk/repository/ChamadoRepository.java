@@ -43,7 +43,7 @@ public class ChamadoRepository extends repositoryBase<Chamado> {
 
 	@Override
 	protected String getPrimaryKeyField() {
-		return "chamado.id";
+		return "id";
 	}
 
 	@Override

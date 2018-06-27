@@ -8,6 +8,20 @@
 <link rel="stylesheet"
 	href="../bootstrap-3.3.7/css/dataTables.bootstrap.min.css">
 <link rel="stylesheet" href="../css/estilo.css">
+<style>
+dl {
+	display: block;
+	margin-top: 2em;
+	margin-bottom: 1em;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+dt {
+	margin-bottom: 1em;
+	margin-left: 1em;
+}
+</style>
 </head>
 <body>
 	<div id="wrap">
@@ -21,7 +35,7 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/">HelpDesk</a>
+					<a class="navbar-brand" href="#"> HelpDesk</a>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
@@ -33,46 +47,45 @@
 		</nav>
 
 		<div class="container-fluid">
+
+			<input name="id" value="0" />
 			<div class="row">
 				<div class="col-sm-3 col-md-2 sidebar">
 					<ul class="nav nav-sidebar">
-						<li><a href="/admin/">Chamados</a></li>
-						<li><a href="/usuario/">Usuário</a></li>
-					</ul>
-				</div>
-				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-					<h2 class="sub-header">Usuários</h2>
-					
-					<div class="table-responsive">
-					<a href="/usuario/criar" class="btn btn-primary">Novo</a>
-						<table id="tabela" class="table table-striped">
-							<thead>
-								<tr>
-									<th>Usuario</th>
-									<th>Tipo Usuario</th>
-									<th width="200"></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:each="modelo : ${model}">
-									<td th:text="${modelo.usuario}"></td>
-									<td th:text="${modelo.tipoUsuario}"></td>
-									<td><a th:href="${'/usuario/editar?id='+modelo.id}"
-										class="btn btn-primary">Editar</a>|<a
-										th:href="${'/usuario/excluir?id='+modelo.id}" class="btn btn-danger">Excluir</a></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+						<li><a href="/">Chamados</a></li>
+						<li th:if="${session.usuario.tipoUsuario.equals('Administrador')}"><a
+							href="/usuario">Usuário</a></li>
+					</ul>
+
 				</div>
+
+
+				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+					<a href="/">Voltar</a>
+					<h2>
+						Chamado <small th:text="${'#'+model.id}"></small>
+					</h2>
+					<hr />
+
+					<dl>
+						<dd>Categoria:</dd>
+						<dt th:text="${model.categoria}"></dt>
+						<dd>Assunto:</dd>
+						<dt th:text="${model.assunto}"></dt>
+						<dd>Descrição:</dd>
+						<dt th:text="${model.descricao}"></dt>
+						<dd>Notas:</dd>
+						<dt th:text="${model.nota}"></dt>
+					</dl>
+					</form>
+				</div>
+
 			</div>
+
 		</div>
 	</div>
 
-
-
-	</div>
 	<script type="text/javascript"
 		src="../bootstrap-3.3.7/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript"

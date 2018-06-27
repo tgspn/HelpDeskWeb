@@ -12,11 +12,12 @@ public class Usuario {
 	private String senha;
 	private Tecnico tecnico;
 
-	public Usuario(int id, String tipoUsuario, String usuario, String senha, Tecnico tecnico) throws NoSuchAlgorithmException {
+	public Usuario(int id, String tipoUsuario, String usuario, String senha, Tecnico tecnico)
+			throws NoSuchAlgorithmException {
 		this.id = id;
 		this.tipoUsuario = tipoUsuario;
 		this.usuario = usuario;
-		setSenha( senha);
+		setSenha(senha);
 		this.tecnico = tecnico;
 	}
 
@@ -48,9 +49,11 @@ public class Usuario {
 		return senha;
 	}
 
-	public void setSenha(String senha) throws NoSuchAlgorithmException {		
-
-		this.senha =Util.MD5( senha);
+	public void setSenha(String senha) throws NoSuchAlgorithmException {
+		if (!senha.isEmpty())
+			this.senha = Util.MD5(senha);
+		else
+			this.senha="";
 	}
 
 	public Tecnico getTecnico() {
@@ -60,7 +63,5 @@ public class Usuario {
 	public void setTecnico(Tecnico tecnico) {
 		this.tecnico = tecnico;
 	}
-
-	
 
 }

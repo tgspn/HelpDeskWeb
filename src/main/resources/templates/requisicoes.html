@@ -26,88 +26,89 @@
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a th:text="${usuario}">@Usuario</a></li>
-						<li><a href="../index.html">Sair</a></li>
+						<li><a href="/login/logout">Sair</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 
 		<div class="container-fluid">
-			<form  method="Post">
-			<input name="id" value="0"/>
-				<div class="row">
-					<div class="col-sm-3 col-md-2 sidebar">
-						<ul class="nav nav-sidebar">
 
-							<li><a href="#">Novo</a></li>
-							<li><a href="#">Editar</a></li>
-							<li><a href="#">Salvar</a></li>
-							<li><a href="#">Excluir</a></li>
+			<input name="id" value="0" />
+			<div class="row">
+				<div class="col-sm-3 col-md-2 sidebar">
+					<ul class="nav nav-sidebar">
 
-						</ul>
-
-					</div>
-
-					<div
-						class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
-
-						<button class="btn btn-Salvar" type="submit">Salvar</button>
-						<br />
-						<br />
-						<div>
-
-							<label for="nome">Categoria </label><br>
-							 <select name="categoria" th:value="${model.categoria}">
-
-								<option value="Software" th:selected="${model.categoria == 'Software'}">Software</option>
-								<option value="Hardware" th:selected="${model.categoria == 'Hardware'}">Hardware</option>
-								<option value="Redes" th:selected="${model.categoria == 'Redes'}">Redes</option>
-
-
-							</select><br />
-							<br />
-							<br />
-						</div>
-						<label for="Assunto">Assunto:</label><br> 
-						<input type="text" name="assunto" size="40" th:value="${model.assunto}" /><br />
-						<br />
-
-						<div>
-
-							<div>
-
-								<label for="Descrição">Descrição: </label><br>
-								<textarea id="Descrição" name="descricao" rows="6" cols="60" th:text="${model.descricao}"></textarea>
-
-							</div>
-							<div>
-
-								<label for="notas">notas: </label><br>
-								<textarea id="Notas" name="notas" rows="6" cols="60" th:text="${model.nota}"></textarea>
-
-							</div>
-
-						</div>
-
-
-
-
-
-
-					</div>
-
-
+						<li><a href="/">Chamados</a></li>
+						<li th:if="${session.usuario.tipoUsuario.equals('Administrador')}"><a
+							href="/usuario">Usuário</a></li>
+					</ul>
 
 				</div>
+
+
+				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<a href="/">Voltar</a>
+					<form method="Post" class="form-horizontal">
+						<h2>
+							Chamado <small th:text="${'#'+model.id}"></small>
+						</h2>
+						<hr/>
+						<div class="form-group">
+							<div class="col-md-4">
+								<label for="nome">Categoria </label> <select
+									class="form-control" name="categoria"
+									th:value="${model.categoria}">
+
+									<option value="Software"
+										th:selected="${model.categoria == 'Software'}">Software</option>
+									<option value="Hardware"
+										th:selected="${model.categoria == 'Hardware'}">Hardware</option>
+									<option value="Redes"
+										th:selected="${model.categoria == 'Redes'}">Redes</option>
+
+
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-4">
+								<label for="Assunto">Assunto:</label> <input
+									class="form-control" type="text" name="assunto" size="40"
+									th:value="${model.assunto}" /><br /> <br />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-md-4">
+
+
+								<label for="Descrição">Descrição: </label>
+								<textarea id="Descrição" name="descricao" class="form-control"
+									rows="6" cols="60" th:text="${model.descricao}"></textarea>
+
+							</div>
+						</div>
+						<div class="form-group" th:if="${session.usuario.tipoUsuario.equals('Tecnico')}">
+							<div class="col-md-4">
+
+								<label for="notas">Notas: </label>
+								<textarea id="Notas" name="notas" class="form-control" rows="6"
+									cols="60" th:text="${model.nota}"></textarea>
+
+							</div>
+						</div>
+						<button class="btn btn-Salvar" type="submit"
+							th:text="${session.usuario.tipoUsuario.equals('Administrador')? 'Salvar':'Finalizar'}">Salvar</button>
+				</div>
+				</form>
+			</div>
+
 		</div>
-		</form>
+
 	</div>
 	</div>
 
-
-
-	</div>
 	<script type="text/javascript"
 		src="../bootstrap-3.3.7/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript"

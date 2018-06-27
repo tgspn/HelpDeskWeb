@@ -30,7 +30,11 @@ public class LoginController {
 		
 		UsuarioDAO dao=new UsuarioDAO();
 		Usuario usuarioLogado=dao.Login(user.getUsername(),user.getSenha());
-		
+		if(usuarioLogado==null)
+		{
+			model.addAttribute("erro","Usuário ou senha errado");
+			return "../index";
+		}
 		session.setAttribute("usuario",usuarioLogado);
 		
 		Configuracao.getCurrent().setTecnico(usuarioLogado.getTecnico());

@@ -120,7 +120,11 @@ public class UsuarioController {
 					daoTec.Insert(tecnico);
 				usuario.setTecnico(tecnico);
 			}
-			usuario.setSenha(user.getSenha());
+			String senha = "";
+			if (!user.getSenha().isEmpty())
+				senha = user.getSenha();
+			
+			usuario.setSenha(senha);
 			usuario.setUsuario(user.getUsuario());
 			usuario.setTipoUsuario(user.getTipoUsuario().toString());
 
@@ -138,17 +142,16 @@ public class UsuarioController {
 		TecnicoDAO daoTec = new TecnicoDAO();
 
 		UsuarioDAO dao = new UsuarioDAO();
-		
-		Usuario usuario=dao.Find(id);
-		Tecnico tecnico=daoTec.Find(usuario.getTecnico().getId());
-		
+
+		Usuario usuario = dao.Find(id);
+		Tecnico tecnico = daoTec.Find(usuario.getTecnico().getId());
+
 		dao.Remove(usuario);
 		daoTec.Remove(tecnico);
-		
-		
+
 		return new ModelAndView("redirect:/usuario");
 	}
-	
+
 	@GetMapping("/logout")
 	public String Logout(HttpSession session) {
 		session.removeAttribute("usuario");

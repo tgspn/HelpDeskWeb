@@ -93,13 +93,50 @@ public class AdminController {
 		if (user == null)
 			return new ModelAndView("redirect:/");
 		
+		
+		ChamadoDAO dao = new ChamadoDAO();
+		if(user.getTipoUsuario().equals("Administrador")) {
+			ModelAndView mav = new ModelAndView("redirect:/");
+			chamado.setStatus("Aberto");		
+			chamado.setTecnico(user.getTecnico());
+			dao.Update(chamado.ToChamado());
+			return mav;
+		}else {
+			dao.Update(chamado.ToChamado());
+			return new ModelAndView("redirect:/tecnico/finalizar?id="+id);
+		}
+		
+		//mav.addObject("usuario",user.getUsuario());
+		
+	}
+	
+	@GetMapping("/excluir")	
+	public ModelAndView Excluir(@RequestParam(value = "id", required = true)int id, Model model, HttpSession session) throws ClassNotFoundException, SQLException, IOException {
+
+		Usuario user = Util.getCurrentUser(session);
+		if (user == null)
+			return new ModelAndView("redirect:/");
+		
 		ModelAndView mav = new ModelAndView("redirect:/");
 		ChamadoDAO dao = new ChamadoDAO();
+		
+		Chamado chamado=dao.Find(id);
+		dao.Remove(chamado);
 
-		chamado.setStatus("Aberto");
-		chamado.setTecnico(user.getTecnico());
-		dao.Update(chamado.ToChamado());
-		//mav.addObject("usuario",user.getUsuario());
+		return mav;
+	}
+	
+	@GetMapping("/detalhes")	
+	public ModelAndView detalhes(@RequestParam(value = "id", required = true)int id, Model model, HttpSession session) throws ClassNotFoundException, SQLException, IOException {
+
+		Usuario user = Util.getCurrentUser(session);
+		if (user == null)
+			return new ModelAndView("redirect:/");
+		
+		ModelAndView mav = new ModelAndView("detalhes");
+		ChamadoDAO dao = new ChamadoDAO();
+		mav.addObject("model",dao.Find(id));
+		mav.addObject("usuario",user.getUsuario());
 		return mav;
 	}
 }

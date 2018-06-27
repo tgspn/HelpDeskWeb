@@ -58,8 +58,8 @@ public class UsuarioRepository extends repositoryBase<Usuario> {
 	@Override
 	protected Map<String, Object> getUpdateValues(Usuario obj) {
 		Map<String, Object> map = new HashMap();
-
-		map.put("senha", obj.getSenha());
+		if(!obj.getSenha().isEmpty())
+			map.put("senha", obj.getSenha());
 		map.put("idTecnico", obj.getTecnico().getId());
 		map.put("tipoUsuario", obj.getTipoUsuario());
 		map.put("usuario", obj.getUsuario());
